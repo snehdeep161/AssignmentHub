@@ -6,5 +6,11 @@
   "background_color": "#ffffff",
   "theme_color": "#3b5bdb",
   "description": "AssignmentHub - Student Academic Help",
-  "icons": []
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
