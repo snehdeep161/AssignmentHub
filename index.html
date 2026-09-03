@@ -1,317 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="manifest"href="manifest.json">
-<meta name="theme colour"c9ntent="#3b5bdb">
-
-  
-<meta charset="UTF-8"> 
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AssignmentHub</title>
-
+<title>StudyMate — Student Academic Help</title>
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  color:#172033;
-  background:#f7f9fc
-}
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 7%;
-  background:white;
-  position:sticky;
-  top:0;
-  z-index:10;
-  box-shadow:0 2px 12px #0000000d
-}
-.logo{
-  font-size:23px;
-  font-weight:800;
-  color:#5b4bdb
-}
-.navlinks a{
-  margin-left:22px;
-  text-decoration:none;
-  color:#333
-}
-.hero{
-  padding:80px 7%;
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:35px;
-  align-items:center;
-  background:linear-gradient(135deg,#eeeaff,#fff)
-}
-h1{
-  font-size:48px;
-  line-height:1.08;
-  margin:0 0 18px
-}
-.hero p{
-  font-size:18px;
-  line-height:1.6;
-  color:#5d6472
-}
-.btn{
-  display:inline-block;
-  padding:14px 22px;
-  border-radius:12px;
-  background:#5b4bdb;
-  color:white;
-  text-decoration:none;
-  font-weight:700;
-  border:0;
-  cursor:pointer
-}
-.card{
-  background:white;
-  border-radius:22px;
-  padding:28px;
-  box-shadow:0 12px 35px #5b4bdb18
-}
-section{
-  padding:65px 7%
-}
-h2{
-  text-align:center;
-  font-size:32px;
-  margin-bottom:35px
-}
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px
-}
-.service{
-  background:white;
-  padding:25px;
-  border-radius:18px;
-  border:1px solid #e9ebf2
-}
-.service h3{
-  margin-top:8px
-}
-.service p{
-  color:#687080;
-  line-height:1.5
-}
-.pricing{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px
-}
-.price{
-  background:white;
-  padding:28px;
-  border-radius:18px;
-  text-align:center;
-  border:1px solid #e9ebf2
-}
-.price strong{
-  font-size:30px;
-  color:#5b4bdb
-}
-form{
-  max-width:650px;
-  margin:auto;
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 10px 30px #0000000a
-}
-label{
-  display:block;
-  font-weight:700;
-  margin:15px 0 7px
-}
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #d9dce5;
-  border-radius:10px;
-  font-size:15px
-}
-textarea{
-  min-height:120px
-}
-.upi{
-  background:#f0eeff;
-  padding:20px;
-  border-radius:15px;
-  margin:20px 0
-}
-.upi code{
-  font-size:17px;
-  font-weight:bold
-}
-footer{
-  text-align:center;
-  padding:30px;
-  background:#172033;
-  color:white
-}
-.note{
-  font-size:13px;
-  color:#697080;
-  margin-top:14px
-}
-@media(max-width:800px){
-  .hero{
-    grid-template-columns:1fr;
-    padding-top:55px
-  }
-  h1{
-    font-size:38px
-  }
-  .services,.pricing{
-    grid-template-columns:1fr
-  }
-  .navlinks{
-    display:none
-  }
-}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#172033;background:#f7f9fc}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 7%;background:white;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0000000d}
+.logo{font-size:23px;font-weight:800;color:#5b4bdb}.navlinks a{margin-left:22px;text-decoration:none;color:#333}
+.hero{padding:80px 7%;display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center;background:linear-gradient(135deg,#eeeaff,#fff)}
+h1{font-size:48px;line-height:1.08;margin:0 0 18px}.hero p{font-size:18px;line-height:1.6;color:#5d6472}
+.btn{display:inline-block;padding:14px 22px;border-radius:12px;background:#5b4bdb;color:white;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+.card{background:white;border-radius:22px;padding:28px;box-shadow:0 12px 35px #5b4bdb18}
+section{padding:65px 7%}h2{text-align:center;font-size:32px;margin-bottom:35px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.service{background:white;padding:25px;border-radius:18px;border:1px solid #e9ebf2}
+.service h3{margin-top:8px}.service p{color:#687080;line-height:1.5}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.price{background:white;padding:28px;border-radius:18px;text-align:center;border:1px solid #e9ebf2}.price strong{font-size:30px;color:#5b4bdb}
+form{max-width:650px;margin:auto;background:white;padding:30px;border-radius:20px;box-shadow:0 10px 30px #0000000a}
+label{display:block;font-weight:700;margin:15px 0 7px}input,select,textarea{width:100%;padding:13px;border:1px solid #d9dce5;border-radius:10px;font-size:15px}textarea{min-height:120px}
+.upi{background:#f0eeff;padding:20px;border-radius:15px;margin:20px 0}.upi code{font-size:17px;font-weight:bold}
+footer{text-align:center;padding:30px;background:#172033;color:white}
+.note{font-size:13px;color:#697080;margin-top:14px}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:55px}h1{font-size:38px}.services,.pricing{grid-template-columns:1fr}.navlinks{display:none}}
 </style>
 </head>
-
 <body>
-
-<nav>
-  <div class="logo">AssignmentHub</div>
-  <div class="navlinks">
-    <a href="#services">Subjects</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#request">Request Help</a>
-  </div>
-</nav>
+<nav><div class="logo">StudyMate</div><div class="navlinks"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#request">Request Help</a></div></nav>
 
 <header class="hero">
-  <div>
-    <h1>Study smarter. Get the help you need.</h1>
-    <p>
-      Get friendly academic support for assignments,
-      projects, presentations and difficult questions.
-    </p>
-    <a class="btn" href="#request">Request Help</a>
-  </div>
-
-  <div class="card">
-    <h3>✨ Quick Academic Support</h3>
-    <p>
-      Choose your subject and tell us what help you need.
-    </p>
-    <p><b>Subjects:</b> English • Hindi • Punjabi</p>
-  </div>
+<div><h1>Study smarter. Get the help you need.</h1>
+<p>Get friendly academic support for projects, presentations, language learning, proofreading, formatting and difficult questions.</p>
+<a class="btn" href="#request">Request Help</a></div>
+<div class="card"><h3>✨ Quick Academic Support</h3><p>Tell us what you're working on, choose a service, and receive guidance tailored to your needs.</p><p><b>Languages:</b> Punjabi • English • Hindi</p></div>
 </header>
 
-<section id="services">
-  <h2>Subjects</h2>
+<section id="services"><h2>Our Services</h2><div class="services">
+<div class="service"><div>📚</div><h3>Project Guidance</h3><p>Help planning, researching, structuring and presenting your own project.</p></div>
+<div class="service"><div>✍️</div><h3>Proofreading</h3><p>Improve grammar, spelling, clarity and formatting in your own work.</p></div>
+<div class="service"><div>🗣️</div><h3>Punjabi Speaking</h3><p>Practice Punjabi conversation and build confidence through guided lessons.</p></div>
+<div class="service"><div>🎨</div><h3>Presentation Help</h3><p>Get help organizing slides, ideas and presentation structure.</p></div>
+<div class="service"><div>📝</div><h3>Notes & Study Help</h3><p>Understand topics with simple explanations and study notes.</p></div>
+<div class="service"><div>💡</div><h3>Question Help</h3><p>Work through difficult questions with explanations and examples.</p></div>
+</div></section>
 
-  <div class="services">
+<section id="pricing"><h2>Simple Pricing</h2><div class="pricing">
+<div class="price"><h3>Basic</h3><strong>₹99+</strong><p>Quick question / short guidance</p></div>
+<div class="price"><h3>Standard</h3><strong>₹199+</strong><p>Project guidance or proofreading</p></div>
+<div class="price"><h3>Custom</h3><strong>₹399+</strong><p>Larger projects and tutoring sessions</p></div>
+</div></section>
 
-    <div class="service">
-      <div>📚</div>
-      <h3>English</h3>
-      <p>Get help with English assignments, grammar and questions.</p>
-    </div>
+<section id="request"><h2>Request Academic Help</h2>
+<form onsubmit="sendRequest(event)">
+<label>Name</label><input id="name" required>
+<label>Contact (email/phone)</label><input id="contact" required>
+<label>Service</label><select id="service"><option>Project Guidance</option><option>Proofreading</option><option>Punjabi Speaking</option><option>Presentation Help</option><option>Notes & Study Help</option><option>Question Help</option></select>
+<label>Describe what you need</label><textarea id="details" required></textarea>
+<div class="upi"><b>Payment</b><p>Replace the placeholder below with your own UPI ID before publishing:</p><code>YOURNAME@upi</code><p class="note">For safety, only accept payments through a UPI account you are authorized to use. Confirm the payment before providing paid services.</p></div>
+<button class="btn" type="submit">Send Request</button>
+<p id="result" class="note"></p>
+</form></section>
 
-    <div class="service">
-      <div>📝</div>
-      <h3>Hindi</h3>
-      <p>Get help with Hindi assignments, grammar and questions.</p>
-    </div>
-
-    <div class="service">
-      <div>🗣️</div>
-      <h3>Punjabi</h3>
-      <p>Practice Punjabi and get help with Punjabi assignments.</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="pricing">
-  <h2>Simple Pricing</h2>
-
-  <div class="pricing">
-
-    <div class="price">
-      <h3>Basic</h3>
-      <strong>₹99+</strong>
-      <p>Quick question / short guidance</p>
-    </div>
-
-    <div class="price">
-      <h3>Standard</h3>
-      <strong>₹199+</strong>
-      <p>Assignment guidance or proofreading</p>
-    </div>
-
-    <div class="price">
-      <h3>Custom</h3>
-      <strong>₹399+</strong>
-      <p>Larger projects and tutoring sessions</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="request">
-  <h2>Request Academic Help</h2>
-
-  <form onsubmit="sendRequest(event)">
-
-    <label>Name</label>
-    <input id="name" required>
-
-    <label>Contact</label>
-    <input id="contact" required>
-
-    <label>Subject</label>
-
-    <select id="service">
-      <option>English</option>
-      <option>Hindi</option>
-      <option>Punjabi</option>
-    </select>
-
-    <label>Describe what you need</label>
-    <textarea id="details" required></textarea>
-
-    <div class="upi">
-      <b>Payment</b>
-      <p>Replace the placeholder below with your own UPI ID:</p>
-      <code>YOURNAME@upi</code>
-    </div>
-
-    <button class="btn" type="submit">
-      Send Request
-    </button>
-
-    <p id="result" class="note"></p>
-
-  </form>
-</section>
-
-<footer>
-  © 2026 AssignmentHub • Academic support
-</footer>
-
+<footer>© 2026 StudyMate • Academic support & tutoring</footer>
 <script>
 function sendRequest(e){
-  e.preventDefault();
-
-  const name = document.getElementById('name').value;
-  const service = document.getElementById('service').value;
-  const details = document.getElementById('details').value;
-
-  document.getElementById('result').innerHTML =
-    "Request prepared successfully!";
+ e.preventDefault();
+ const name=document.getElementById('name').value;
+ const service=document.getElementById('service').value;
+ const details=document.getElementById('details').value;
+ const text=`Hello! I want help with ${service}.%0AName: ${name}%0ADetails: ${details}`;
+ document.getElementById('result').innerHTML='Request prepared. Replace the WhatsApp number in the code with yours to enable direct sending.';
 }
 </script>
-if("serviceWorker"in navigation){navigator.serviceWorker.register("sw.js")}
 </body>
 </html>
