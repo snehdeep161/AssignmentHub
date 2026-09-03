@@ -1,4 +1,4 @@
-const CACHE_NAME = "assignmenthub-v1";
+const CACHE_NAME = "assignmenthub-v2";
 
 const FILES = [
  "./",
