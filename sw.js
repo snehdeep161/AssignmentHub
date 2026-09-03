@@ -1,9 +1,9 @@
 const CACHE_NAME = "assignmenthub-v1";
 
 const FILES = [
-  "./",
-  "./index.html",
-  "./manifest.json"
+ "./",
+ "./index.html",
+ "./manifest.json"
 ];
 
 self.addEventListener("install", event => {
