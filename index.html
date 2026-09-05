@@ -248,7 +248,8 @@ Login
 
 <!-- ADMIN ORDERS -->
 
-<div id="adminPanel" class="hidden">
+
+<div id="adminPanel" 
 
 <h3>Admin Orders</h3>
 
@@ -260,12 +261,42 @@ Logout
 Loading...
 </div>
 
-</div>
+<hr>
+
+<hr>
+
+<div id="aiGenerator" style="display:block !important; visibility:visible !important; padding:15px;">
+
+<h3>AI Study Guide Generator</h3>
+
+<input
+  id="aiTopic"
+  type="text"
+  placeholder="Enter topic"
+  style="display:block; width:100%; margin:10px 0; padding:10px;"
+>
+
+<input
+  id="aiClass"
+  type="text"
+  placeholder="Enter class"
+  style="display:block; width:100%; margin:10px 0; padding:10px;"
+>
+
+<button
+  onclick="generateAIContent()"
+  style="display:block; padding:10px 20px;"
+>
+Generate
+</button>
+
+<div id="aiResult"></div>
 
 </div>
 
-</div>
 
+
+  
 <footer>
 © 2026 AssignmentHub
 </footer>
@@ -274,6 +305,13 @@ Loading...
 <!-- FIREBASE -->
 
 <script type="module">
+  
+import {
+  getAI,
+  getGenerativeModel,
+  GoogleAIBackend
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-ai.js";
+
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
@@ -298,9 +336,13 @@ signOut
 }
 from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
+import {
+  initializeAppCheck,
+  ReCaptchaEnterpriseProvider
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app-check.js";
 
 /* FIREBASE CONFIG */
-
+  
 const firebaseConfig = {
 
 apiKey:"AIzaSyBAvreIztjnFOMjGvPv7HBWsHWQQQfeZ_0",
@@ -322,10 +364,70 @@ appId:"1:811567570773:web:ebc2921bec81e6d5afd9dc"
 
 const app = initializeApp(firebaseConfig);
 
+const appCheck = initializeAppCheck(app, {
+provider: new ReCaptchaEnterpriseProvider("6Ld_zaYtAAAAAL8qdPXtujAh6P3mIRD89qyiMCV"),
+isTokenAutoRefreshEnabled: true
+});
+
+const ai = getAI(app, {
+  backend: new GoogleAIBackend()
+});
+
+const model = getGenerativeModel(ai, {
+  model: "gemini-3.7-flash"
+});
+  
 const db = getFirestore(app);
 
 const auth = getAuth(app);
 
+async function generateStudyGuide(topic, className) {
+const prompt = `
+Create an educational study guide.
+
+Topic: ${topic}
+Class: ${className}
+
+Include:
+1. Introduction
+2. Key concepts
+3. Step-by-step explanation
+4. Important points
+5. Short conclusion
+
+Make it suitable for learning and understanding.
+`;
+
+const result = await model.generateContent(prompt);
+return result.response.text();
+}
+
+async function generateAIContent() {
+const topic = document.getElementById("aiTopic").value.trim();
+const className = document.getElementById("aiClass").value.trim();
+const resultBox = document.getElementById("aiResult");
+
+if (!topic || !className) {
+resultBox.innerText = "Please enter topic and class.";
+return;
+}
+
+resultBox.innerText = "Generating...";
+
+try {
+const result = await model.generateContent(
+`Create an educational study guide for Class ${className} on the topic "${topic}". Include an introduction, key concepts, clear explanations, important points, and a short conclusion.`
+);
+
+resultBox.innerText = result.response.text();
+
+} catch (error) {
+console.error(error);
+resultBox.innerText = "AI generation failed: " + error.message;
+}
+}
+
+window.generateAIContent = generateAIContent;
 
 /* PUT YOUR ADMIN EMAIL HERE */
 
@@ -392,6 +494,8 @@ try{
 await addDoc(
 collection(db,"orders"),
 {
+
+studentUid: auth.currentUser.uid,
 
 studentName:name,
 
@@ -496,9 +600,7 @@ document.getElementById("loginBox")
 .classList.add("hidden");
 
 document.getElementById("adminPanel")
-.classList.remove("hidden");
-
-loadOrders();
+.classList.remove("hidden")Orders();
 
 }
 
